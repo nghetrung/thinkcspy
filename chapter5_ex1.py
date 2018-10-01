@@ -50,4 +50,4 @@ for i in range(stay_length):
         week = week + 1
 
 current_day_name = day_name(day_num)
-print('You will return on', current_day_name, 'in', week, 'weeks')
+print('You will return on', current_day_name, 'in', week, 'weeks')kbkasf
