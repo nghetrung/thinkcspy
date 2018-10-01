@@ -174,6 +174,6 @@ t, wn = create_window_and_turtle('yellow', 'red', 3, 'Star!')
 draw_multi_star(t, 5)
 wn.mainloop()
     
-        
+       
         
         
