@@ -23,8 +23,8 @@ print('The length of the hypotenuse is:', find_hyplot(s1, s2))
 """
 
 def is_rightangled(s1, s2, s3):
-    if s1**2 == (s2**2 + s3**2) or s2**2 == (s1**2 + s3**2) or s3**2 == (s1**2 + s2**2):
+    if abs(s1**2 - (s2**2 + s3**2)) < 0.00000001 or abs(s2**2 - (s1**2 + s3**2)) < 0.00000001 or abs(s3**2 - (s1**2 + s2**2)) < 0.00000001:
         return True
     return False
 
-is_rightangled(5, 2, 4)
+is_rightangled(5.0, 3.0, 4.0)
