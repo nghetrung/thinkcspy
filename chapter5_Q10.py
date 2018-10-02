@@ -5,3 +5,10 @@
     root.) 
 """
 
+def find_hyplot(s1, s2):
+    l_hypot = (s1**2 + s2**2)**0.5
+    return l_hypot
+
+s1 = int(input('What is the length of the first side?: '))
+s2 = int(input('What is the length of the second side?: '))
+print('The length of the hypotenuse is:', find_hyplot(s1, s2))
