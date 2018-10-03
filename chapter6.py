@@ -74,8 +74,20 @@ def day_add(dayname, ndays):
     holiday_day_name = day_name(holiday_day_num % 7)
     return holiday_day_name
 
-# Q5
-
+# Q6
+def days_in_month(month_name):
+    if month_name not in['January', 'February', 'March', 'April', 
+                        'May', 'June', 'July', 'August', 'September', 
+                        'October', 'November', 'December']:
+        ndays = 'None'
+    else:
+        if month_name in['January', 'March', 'May', 'July', 'August', 'October', 'December']:
+            ndays = 31
+        elif month_name == 'February':
+            ndays = 28
+        else:
+            ndays = 30
+    return ndays
 
 """
     Test cases
@@ -125,6 +137,15 @@ class TestDayAdd(unittest.TestCase):
         self.assertEqual(day_add('Sunday', -1), 'Saturday')
         self.assertEqual(day_add('Sunday', -7), 'Sunday')
         self.assertEqual(day_add('Tuesday', -100), 'Sunday')
+
+
+class TestDayInMonths(unittest.TestCase):
+
+    def test_days_in_month(self):
+        self.assertEqual(days_in_month('February'), 28)
+        self.assertEqual(days_in_month('March'), 31)
+        self.assertEqual(days_in_month('April'), 30)
+        self.assertEqual(days_in_month('Februaryy'), 'None')
 
 # Running the tests
 if __name__ == '__main__':
