@@ -89,6 +89,26 @@ def days_in_month(month_name):
             ndays = 30
     return ndays
 
+# Q7, 8
+def to_secs(hours, minutes, seconds):
+    total_second = hours*60*60 + minutes*60 + seconds
+    return int(total_second)
+
+# Q9
+# part a
+def hours_in(tsec):
+    hours = tsec//3600
+    return hours
+# part b
+def minutes_in(tsec):
+    minutes = (tsec - hours_in(tsec)*3600)//60
+    return minutes
+# part c
+def seconds_in(tsec):
+    seconds = tsec - hours_in(tsec)*3600 - minutes_in(tsec)*60
+    return seconds
+
+
 """
     Test cases
 """    
@@ -146,6 +166,26 @@ class TestDayInMonths(unittest.TestCase):
         self.assertEqual(days_in_month('March'), 31)
         self.assertEqual(days_in_month('April'), 30)
         self.assertEqual(days_in_month('Februaryy'), 'None')
+
+class TestToSecs(unittest.TestCase):
+
+    def test_to_secs(self):
+        self.assertEqual(to_secs(2, 30, 10), 9010)
+        self.assertEqual(to_secs(2, 0, 0), 7200)
+        self.assertEqual(to_secs(0, 2, 0), 120)
+        self.assertEqual(to_secs(0, 0, 42), 42)
+        self.assertEqual(to_secs(0, -10, 10), -590)
+    def test_to_secs_float(self):
+        self.assertEqual(to_secs(2.5, 0, 10.71), 9010)
+        self.assertEqual(to_secs(2.433, 0, 0), 8758)
+
+
+class TestInverseToSecs(unittest.TestCase):
+
+    def test_inverse_tosecs(self):
+        self.assertEqual(hours_in(9010), 2)
+        self.assertEqual(minutes_in(9010), 30)
+        self.assertEqual(seconds_in(9010), 10)
 
 # Running the tests
 if __name__ == '__main__':
