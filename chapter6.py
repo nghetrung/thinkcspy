@@ -65,14 +65,16 @@ def day_num(dayname):
 # Q4
 def day_add(dayname, ndays):
     current_day_num = day_num(dayname)
-    for i in range(ndays):
-        if current_day_num + 1 > 6:
-            current_day_num = 0
-        else:
-            current_day_num = current_day_num + 1
-    holiday_day_num = current_day_num
-    holiday_day_name = day_name(holiday_day_num)
+    # for i in range(ndays):
+    #     if current_day_num + 1 > 6:
+    #         current_day_num = 0
+    #     else:
+    #         current_day_num = current_day_num + 1
+    holiday_day_num = current_day_num + ndays
+    holiday_day_name = day_name(holiday_day_num % 7)
     return holiday_day_name
+
+# Q5
 
 
 """
@@ -119,6 +121,10 @@ class TestDayAdd(unittest.TestCase):
         self.assertEqual(day_add('Tuesday', 0), 'Tuesday')
         self.assertEqual(day_add('Tuesday', 14), 'Tuesday')
         self.assertEqual(day_add('Sunday', 100), 'Tuesday')
+    def test_day_add_negative(self):
+        self.assertEqual(day_add('Sunday', -1), 'Saturday')
+        self.assertEqual(day_add('Sunday', -7), 'Sunday')
+        self.assertEqual(day_add('Tuesday', -100), 'Sunday')
 
 # Running the tests
 if __name__ == '__main__':
