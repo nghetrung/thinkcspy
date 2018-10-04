@@ -108,6 +108,14 @@ def seconds_in(tsec):
     seconds = tsec - hours_in(tsec)*3600 - minutes_in(tsec)*60
     return seconds
 
+# Q13, 14
+def slope(x1, y1, x2, y2):
+    slope = (y2-y1)/(x2-x1)
+    return slope
+
+def intercept(x1, y1, x2, y2):
+    intercept = y1 - slope(x1, y1, x2, y2)*x1
+    return intercept
 
 """
     Test cases
@@ -186,6 +194,13 @@ class TestInverseToSecs(unittest.TestCase):
         self.assertEqual(hours_in(9010), 2)
         self.assertEqual(minutes_in(9010), 30)
         self.assertEqual(seconds_in(9010), 10)
+
+class TestIntercept(unittest.TestCase):
+
+    def test_intercept(self):
+        self.assertEqual(intercept(1, 6, 3, 12), 3.0)
+        self.assertEqual(intercept(6, 1, 1, 6), 7.0)
+        self.assertEqual(intercept(4, 6, 12, 8), 5.0)
 
 # Running the tests
 if __name__ == '__main__':
